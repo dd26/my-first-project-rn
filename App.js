@@ -1,20 +1,24 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+// import { StatusBar } from 'expo-status-bar';
+import { StyleSheet } from 'react-native';
+import React from 'react';
+// import MainStack from './src/navigation/MainStack';
+// import { StatusBar } from 'expo-status-bar';
+import 'react-native-gesture-handler';
+// import TabNavigation from './src/navigation/TabNavigation';
+import NavegacionDraw from '././src/navigation/NavegacionDraw'
+
 
 export default function App() {
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavegacionDraw />
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  mainContainer: {
     flex: 1,
+    paddingTop: 35,
     backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+  }
 });
