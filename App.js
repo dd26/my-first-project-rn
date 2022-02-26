@@ -2,7 +2,6 @@
 import { StyleSheet, View } from 'react-native';
 import React, { useEffect } from 'react';
 import MainStack from './src/navigation/MainStack';
-import { StatusBar } from 'expo-status-bar';
 import 'react-native-gesture-handler';
 // import TabNavigation from './src/navigation/TabNavigation';
 import NavegacionDraw from '././src/navigation/NavegacionDraw'

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import {View, StyleSheet, Text, ImageBackground, Pressable, ScrollView } from 'react-native'
+import {View, StyleSheet, Text, ImageBackground, Pressable } from 'react-native'
+import { StatusBar } from 'expo-status-bar';
 import { TextInput } from 'react-native-gesture-handler';
 import { api } from '../helpers/Axios';
 
@@ -69,6 +70,7 @@ const Login = ({ navigation }) => {
                     </View>
                 </View>
             </ImageBackground>
+            <StatusBar style="light" />
         </View>
     );
 }
