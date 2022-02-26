@@ -1,8 +1,8 @@
 // import { StatusBar } from 'expo-status-bar';
-import { StyleSheet } from 'react-native';
-import React from 'react';
-// import MainStack from './src/navigation/MainStack';
-// import { StatusBar } from 'expo-status-bar';
+import { StyleSheet, View } from 'react-native';
+import React, { useEffect } from 'react';
+import MainStack from './src/navigation/MainStack';
+import { StatusBar } from 'expo-status-bar';
 import 'react-native-gesture-handler';
 // import TabNavigation from './src/navigation/TabNavigation';
 import NavegacionDraw from '././src/navigation/NavegacionDraw'
@@ -11,14 +11,15 @@ import NavegacionDraw from '././src/navigation/NavegacionDraw'
 export default function App() {
 
   return (
-    <NavegacionDraw />
+    <View style={styles.mainContainer}>
+      <MainStack styles={styles.mainContainer} />
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
-    paddingTop: 35,
-    backgroundColor: '#fff',
+    backgroundColor: '#FFF',
   }
 });

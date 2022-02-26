@@ -1,32 +1,83 @@
-import React, { useState } from 'react';
-import { StyleSheet, View, Text, Button, TextInput } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { StyleSheet, View, Text, Button, TextInput, ScrollView } from 'react-native';
+import { getData, storeData } from '../helpers/AsyncStorageF';
+import { api } from '../helpers/Axios'
 
-const initialName = 'Inicial Name';
+const initialObj = {
+    name: '',
+    lastName: ''
+}
 
 export default function Home({ navigation }) {
 
-    const [name, setName] = useState(initialName)
+    useEffect(async () => {
+        const data = await getData('storage_Key');
+        // console.log('data', data);
+        if (data) {
+            // console.log('Entro aki')
+            setFormObj({
+                ...data
+            })
+        }        
+    }, [])
+
+    const getAxiosDataTest = async () => {
+        console.log('Obteniendo datos')
+        /* await api.get('test').then(res => {
+            console.log('res', res);
+        }) */
+        // console.log(await apiUrl())
+        // await storeData('@VS_SESSION_INFO', { token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2MTJmYjliYWZhNTE2OTE3NWMzNWVhYTUiLCJpYXQiOjE2NDA2MzQzMzV9.KEtu-qfCO5Pk_8nq76dK0qZ2d2pUv0ddY3VoFl01p2E' })
+        await api.post('llogin', { email: 'denilsson.d.sousa@gmail.com', password: '123456789' }).then(res => {
+            // console.log(res.data, 'RESSSS');
+            console.log(res, 'res')
+        })
+    }
+
+    const [formObj, setFormObj] = useState(initialObj)
 
     const onPressLearnMore = () => {
         navigation.navigate('Profile');
     }
 
+    const sendName = async () => {
+        await storeData(formObj)
+    }
+
+    const getObject = async () => {
+        console.log(await getData('@VS_SESSION_INFO'))
+    }
+
     return (
-        <View style={styles.container}>
+        <ScrollView style={styles.container}>
             <Text style={styles.color}>Esta es la pagina de inicio</Text>
             <TextInput
                 style={styles.input}
                 placeholder="Ingrese su nombre"
-                onChangeText={(text) => setName(text)}
+                onChangeText={(text) => setFormObj({ ...formObj, name: text })}
+                value={formObj.name}
+            />
+            <TextInput
+                style={styles.input}
+                placeholder="Ingrese su nombre"
+                onChangeText={(text) => setFormObj({ ...formObj, lastName: text })}
+                value={formObj.lastName}
             />
             <View style={styles.btnCnt}>
                 <Button
-                    onPress={onPressLearnMore}
-                    title="Profile"
+                    onPress={getAxiosDataTest}
+                    title="Enviar Nombre"
                     color="darkblue"
                 />
             </View>
-        </View>
+            <View style={styles.btnCnt}>
+                <Button
+                    onPress={getObject}
+                    title="Obtener Nombre"
+                    color="darkblue"
+                />
+            </View>
+        </ScrollView>
     );
 }
 
@@ -54,6 +105,7 @@ const styles = StyleSheet.create({
         flex: 1,
         // alinear abajo
         justifyContent: 'flex-end',
+        marginTop: 10
     }
 });
 
