@@ -47,7 +47,7 @@ const Login = ({ navigation }) => {
                         />
                     </View>
                     <View style={{ paddingTop: 10 }}>
-                        <Text style={styles.text}>Email</Text>
+                        <Text style={styles.text}>Contrasena</Text>
                         <TextInput
                             style={styles.input}
                             placeholder="Ingrese su contraseña"
@@ -61,7 +61,10 @@ const Login = ({ navigation }) => {
                         title="Inicia Sesión"
                     />
                     <View style={styles.containerTexts}>
-                        <Text style={styles.textRegister}>Soy nuevo, quiero REGISTRARME</Text>
+                        <Text
+                            style={styles.textRegister}
+                            onPress={() => navigation.navigate('Register')}
+                        >Soy nuevo, quiero REGISTRARME</Text>
                         <Text style={styles.textRegister}>Olvide mi contraseña</Text>
                         {
                             hasLogin &&

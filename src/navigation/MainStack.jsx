@@ -4,6 +4,7 @@ import React from 'react'
 import Home from '../pages/Home'
 import Login from '../pages/Login'
 import Profile from '../pages/Profile'
+import Register from '../pages/Register'
 
 const Stack = createNativeStackNavigator()
 
@@ -18,6 +19,10 @@ const MainStack = () => {
                 <Stack.Screen
                     name="Login"
                     component={Login}
+                />
+                <Stack.Screen
+                    name="Register"
+                    component={Register}
                 />
                 <Stack.Screen
                     name="Home"
