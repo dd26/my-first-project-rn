@@ -5,6 +5,11 @@ import MainStack from './src/navigation/MainStack';
 import 'react-native-gesture-handler';
 // import TabNavigation from './src/navigation/TabNavigation';
 import NavegacionDraw from '././src/navigation/NavegacionDraw'
+import { LogBox } from 'react-native';
+
+LogBox.ignoreLogs([
+  "[react-native-gesture-handler] Seems like you\'re using an old API with gesture components, check out new Gestures system!",
+])
 
 
 export default function App() {
